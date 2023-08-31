@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:shop_app/models/dummy_data.dart';
+import 'package:shop_app/widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,6 +14,9 @@ class _HomeScreenState extends State<HomeScreen> {
   var selectingBrand = 'All';
 
   final border = const OutlineInputBorder(
+    borderSide: BorderSide(
+      color: Color.fromARGB(255, 172, 171, 171),
+    ),
     borderRadius: BorderRadius.horizontal(
       left: Radius.circular(50),
     ),
@@ -37,11 +42,19 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 Expanded(
                   child: TextField(
+                    textCapitalization: TextCapitalization.words,
                     decoration: InputDecoration(
                       hintText: 'Search',
+                      hintStyle: const TextStyle(fontSize: 20),
                       prefixIcon: const Icon(Icons.search),
                       border: border,
+                      enabledBorder: border,
                       focusedBorder: border,
+                      prefixIconColor: Colors.grey,
+                    ),
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.normal,
                     ),
                   ),
                 ),
@@ -80,6 +93,16 @@ class _HomeScreenState extends State<HomeScreen> {
                           : const Color.fromARGB(255, 233, 232, 232),
                     ),
                   ),
+                );
+              },
+            ),
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                return ProductCard(
+                  product: products[index],
                 );
               },
             ),
