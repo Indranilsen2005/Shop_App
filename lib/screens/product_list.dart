@@ -4,14 +4,14 @@ import 'package:shop_app/models/dummy_data.dart';
 import 'package:shop_app/screens/product_details.dart';
 import 'package:shop_app/widgets/product_card.dart';
 
-class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+class ProductListScreen extends StatefulWidget {
+  const ProductListScreen({super.key});
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  State<ProductListScreen> createState() => _ProductListScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class _ProductListScreenState extends State<ProductListScreen> {
   final filters = const ['All', 'Adidas', 'Nike', 'Bata', 'Puma'];
   var selectingBrand = 'All';
 
@@ -128,3 +128,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }
+
