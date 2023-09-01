@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
-  const ProductCard({super.key, required this.product});
+  const ProductCard({
+    super.key,
+    required this.product,
+    required this.backgroundColor,
+  });
 
   final Map<String, Object> product;
+  final Color backgroundColor;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +17,7 @@ class ProductCard extends StatelessWidget {
       margin: const EdgeInsets.all(20),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 233, 232, 232),
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(25),
       ),
       child: Column(

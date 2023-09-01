@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:shop_app/screens/home_screen.dart';
 
 void main() {
@@ -18,6 +19,10 @@ class MyApp extends StatelessWidget {
           primary: const Color.fromARGB(255, 250, 225, 2),
         ),
         textTheme: const TextTheme(
+          titleLarge: TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.bold,
+          ),
           titleMedium: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 25,
@@ -27,6 +32,7 @@ class MyApp extends StatelessWidget {
             fontSize: 23,
           ),
         ),
+        useMaterial3: true,
       ),
       home: const HomeScreen(),
     );

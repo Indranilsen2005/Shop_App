@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:shop_app/models/dummy_data.dart';
+import 'package:shop_app/screens/product_details.dart';
 import 'package:shop_app/widgets/product_card.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -30,14 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
           SafeArea(
             child: Row(
               children: [
-                const Padding(
-                  padding: EdgeInsets.all(20),
+                Padding(
+                  padding: const EdgeInsets.all(20),
                   child: Text(
                     'Shoes\nCollection',
-                    style: TextStyle(
-                      fontSize: 35,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
                 Expanded(
@@ -82,6 +81,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         horizontal: 15,
                         vertical: 13,
                       ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(25),
+                      ),
                       label: Text(
                         filters[index],
                         style: const TextStyle(
@@ -90,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       backgroundColor: selectingBrand == filters[index]
                           ? Theme.of(context).colorScheme.primary
-                          : const Color.fromARGB(255, 233, 232, 232),
+                          : const Color.fromARGB(255, 237, 236, 236),
                     ),
                   ),
                 );
@@ -101,8 +103,22 @@ class _HomeScreenState extends State<HomeScreen> {
             child: ListView.builder(
               itemCount: products.length,
               itemBuilder: (context, index) {
-                return ProductCard(
-                  product: products[index],
+                return GestureDetector(
+                  onTap: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetailsScreen(
+                          product: products[index],
+                        ),
+                      ),
+                    );
+                  },
+                  child: ProductCard(
+                    backgroundColor: index.isOdd
+                        ? const Color.fromARGB(255, 168, 212, 248)
+                        : const Color.fromARGB(255, 237, 236, 236),
+                    product: products[index],
+                  ),
                 );
               },
             ),

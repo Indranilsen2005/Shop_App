@@ -5,7 +5,7 @@ final products = [
     'price': 599.00,
     'imageUrl': 'assets/images/shoes_1.png',
     'company': 'Nike',
-    'sizes': [9, 10, 11, 12],
+    'sizes': [6, 7, 8, 9, 10, 11, 12],
   },
   {
     'id': '1',
@@ -13,7 +13,7 @@ final products = [
     'price': 899.00,
     'imageUrl': 'assets/images/shoes_2.png',
     'company': 'Addidas',
-    'sizes': [9, 10, 12],
+    'sizes': [6, 7, 8, 9, 10, 12],
   },
   {
     'id': '2',
