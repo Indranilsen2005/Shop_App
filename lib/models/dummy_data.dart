@@ -32,3 +32,13 @@ final products = [
     'sizes': [8, 9, 10],
   },
 ];
+
+final cart = [
+  {
+    'id': 3,
+    'title': 'Jorden Shoes',
+    'price': 659.00,
+    'imageUrl': 'assets/images/shoes_4.png',
+    'sizes': 8,
+  }
+];

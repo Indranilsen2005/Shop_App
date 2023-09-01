@@ -29,7 +29,7 @@ class MyApp extends StatelessWidget {
           ),
           bodySmall: TextStyle(
             fontWeight: FontWeight.bold,
-            fontSize: 23,
+            fontSize: 22,
           ),
         ),
         useMaterial3: true,
