@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:shop_app/providers/cart_provider.dart';
 
 class ProductDetailsScreen extends StatefulWidget {
   const ProductDetailsScreen({
@@ -14,7 +17,29 @@ class ProductDetailsScreen extends StatefulWidget {
 
 class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
   int? selectingSize;
-  
+
+  void onTapAddToCart() {
+    if (selectingSize != null) {
+      Provider.of<CartProvider>(context, listen: false)
+          .addProduct(widget.product);
+
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Item successfully added to cart'),
+        ),
+      );
+      
+    } else {
+      ScaffoldMessenger.of(context).clearSnackBars();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Please select a size'),
+        ),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -93,7 +118,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: ElevatedButton.icon(
-                    onPressed: () {},
+                    onPressed: onTapAddToCart,
                     icon: const Icon(Icons.shopping_cart),
                     label: const Text(
                       'Add to Cart',
