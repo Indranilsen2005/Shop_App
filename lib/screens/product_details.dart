@@ -75,6 +75,7 @@ class _ProductDetailsScreenState extends State<ProductDetailsScreen> {
             padding: const EdgeInsets.all(15),
             child: Image.asset(
               widget.product['imageUrl'].toString(),
+              height: 200,
             ),
           ),
           const Spacer(flex: 2),

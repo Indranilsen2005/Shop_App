@@ -13,8 +13,11 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 385,
-      margin: const EdgeInsets.all(20),
+      height: 340,
+      margin: const EdgeInsets.symmetric(
+        vertical: 10,
+        horizontal: 20,
+      ),
       padding: const EdgeInsets.all(15),
       decoration: BoxDecoration(
         color: backgroundColor,
@@ -35,7 +38,7 @@ class ProductCard extends StatelessWidget {
           Center(
             child: Image.asset(
               product['imageUrl'].toString(),
-              height: 300,
+              height: 225,
             ),
           )
         ],

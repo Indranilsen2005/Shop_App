@@ -26,6 +26,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Column(
         children: [
@@ -61,7 +62,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
           ),
           SizedBox(
-            height: 100,
+            height: 60,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
               itemCount: filters.length,
@@ -100,32 +101,59 @@ class _ProductListScreenState extends State<ProductListScreen> {
             ),
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: products.length,
-              itemBuilder: (context, index) {
-                return GestureDetector(
-                  onTap: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => ProductDetailsScreen(
+            child: screenWidth > 650
+                ? GridView.builder(
+                    itemCount: products.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 1.35,
+                    ),
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailsScreen(
+                                product: products[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: ProductCard(
+                          backgroundColor: index.isOdd
+                              ? const Color.fromARGB(255, 168, 212, 248)
+                              : const Color.fromARGB(255, 237, 236, 236),
                           product: products[index],
                         ),
-                      ),
-                    );
-                  },
-                  child: ProductCard(
-                    backgroundColor: index.isOdd
-                        ? const Color.fromARGB(255, 168, 212, 248)
-                        : const Color.fromARGB(255, 237, 236, 236),
-                    product: products[index],
+                      );
+                    },
+                  )
+                : ListView.builder(
+                    itemCount: products.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => ProductDetailsScreen(
+                                product: products[index],
+                              ),
+                            ),
+                          );
+                        },
+                        child: ProductCard(
+                          backgroundColor: index.isOdd
+                              ? const Color.fromARGB(255, 168, 212, 248)
+                              : const Color.fromARGB(255, 237, 236, 236),
+                          product: products[index],
+                        ),
+                      );
+                    },
                   ),
-                );
-              },
-            ),
-          )
+          ),
         ],
       ),
     );
   }
 }
-
